@@ -23,7 +23,7 @@ function login(e){
     e.preventDefault();
     const object = {
         name: document.getElementById('userName').value,
-        password: document.getElementById('inputPassword').value,
+        password: document.getElementById('inputPassword').value
     };
     postRequest('/icefire/auth/', object).then(data => {
         if(data){
@@ -31,7 +31,6 @@ function login(e){
             getEncryptList();
             window.location = '/icefire/';
         }
-
     })
 }
 function logOut(e) {
