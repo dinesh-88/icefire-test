@@ -14,6 +14,9 @@ git clone https://github.com/dinesh-88/icefire-test
 
 # Run unit tests
 1. mvn test
+
+# Run Application
+1. mvn spring-boot:run
 ```
 
 ## API
