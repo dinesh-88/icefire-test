@@ -1,4 +1,4 @@
-# icefire coding  challenge
+# Icefire coding  challenge
 
 Getting Started
 ---------------
@@ -61,6 +61,18 @@ git clone https://github.com/dinesh-88/icefire-test
       
       1. User Name/ Password : dinesh / 123
       2. User Name/ Password : admin / password
+      
+## DB 
+
+I used H2 DB for in memory db.Which is embedded to application. Access URL as below.
+
+```
+URL : http://localhost:8080/icefire/h2/
+
+User Name : sa
+Password : admin
+
+``` 
        
       
   
