@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+    <title>Home</title>
+</head>
+<body>
+<div class="container">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Encrypted List</h4>
+                <div class="table-responsive">
+                    <table id="entryListTable" class="table table-striped table-body" >
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th scope="col" style="width: 50%">Value</th>
+                        </tr>
+                        </thead>
+                        <tbody id="entryList">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h4>New Encryption</h4>
+                <form>
+                    <div class="form-group">
+                        <textarea type="email" class="form-control" id="textInput" placeholder="Enter text to encrypt/decrypt" onchange="clearSelected()"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" onclick="sendToServer(event,1)">Encrypt</button>
+                    <button type="submit" class="btn btn-primary" onclick="sendToServer(event,2)">Decrypt</button>
+                    <button type="submit" class="btn btn-primary" onclick="logOut(event)">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
