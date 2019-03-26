@@ -1,5 +1,6 @@
 package com.icefire.assigment.encrytdecryptmodule.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.icefire.assigment.encrytdecryptmodule.models.Entry;
 import com.icefire.assigment.encrytdecryptmodule.services.EntryService;
 import com.icefire.assigment.encrytdecryptmodule.services.UserService;
@@ -22,7 +23,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static sun.plugin2.util.PojoUtil.toJson;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(EntryAPIController.class)
@@ -34,6 +34,8 @@ public class EntryAPIControllerTest {
     @MockBean
     private EntryService entryService;
 
+    @Autowired
+    ObjectMapper objectMapper;
     @Test
     public void getEntriesUsingUserId() throws Exception{
         Entry entry = new Entry();
@@ -59,7 +61,7 @@ public class EntryAPIControllerTest {
         testEntry.setUserId(1);
         given(entryService.encryptEntry(testEntry)).willReturn(testEntry);
         mvc.perform(post("/entry/encrypt/")
-                .contentType(MediaType.APPLICATION_JSON).content(toJson(testEntry))).andExpect(status().isCreated());
+                .contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(testEntry))).andExpect(status().isCreated());
     }
 
     @Test
@@ -72,6 +74,6 @@ public class EntryAPIControllerTest {
         testDeEntry.setUserId(1);
         given(entryService.decryptEntry(testEntry)).willReturn(testDeEntry);
         mvc.perform(post("/entry/decrypt/")
-                .contentType(MediaType.APPLICATION_JSON).content(toJson(testEntry))).andExpect(status().isOk());
+                .contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(testEntry))).andExpect(status().isOk());
     }
 }
