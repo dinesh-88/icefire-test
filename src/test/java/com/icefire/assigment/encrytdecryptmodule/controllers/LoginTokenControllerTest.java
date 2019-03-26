@@ -1,5 +1,6 @@
 package com.icefire.assigment.encrytdecryptmodule.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.icefire.assigment.encrytdecryptmodule.models.User;
 import com.icefire.assigment.encrytdecryptmodule.services.UserService;
 import org.junit.Test;
@@ -28,6 +29,8 @@ public class LoginTokenControllerTest {
     @MockBean
     private UserService userService;
 
+    @Autowired
+    ObjectMapper objectMapper;
     @Test
     public void login() throws Exception {
 
@@ -46,6 +49,6 @@ public class LoginTokenControllerTest {
         given(userService.updateUser(testUser)).willReturn(testUser);
 
         mvc.perform(post("/auth/")
-                .contentType(MediaType.APPLICATION_JSON).content(toJson(testUser))).andExpect(status().isOk());
+                .contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(testUser))).andExpect(status().isOk());
     }
 }
