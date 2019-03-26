@@ -11,6 +11,9 @@ git clone https://github.com/dinesh-88/icefire-test
 # build 
 1. cd icefire-test
 2. mvn clean install
+
+# Run unit tests
+1. mvn test
 ```
 
 ## API
